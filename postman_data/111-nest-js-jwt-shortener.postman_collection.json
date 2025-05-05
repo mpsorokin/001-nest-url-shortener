@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"user01\",\r\n    \"email\": \"test012@test.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"name\": \"user02\",\r\n    \"email\": \"test0122@test.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -149,7 +149,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"originalUrl\": \"sjdbsjd\"\r\n}",
+							"raw": "{\r\n    \"originalUrl\": \"https://claude.ai/public/artifacts/877800b0-7789-4311-92ac-3a80c0aa1d08\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -163,6 +163,77 @@
 							],
 							"path": [
 								"links"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete link",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE2M2YwN2IzLTVkMDYtNDM4OC04MWYwLTczYWQ0NGZlNzY0OCIsImlhdCI6MTc0NjQ0Mjg3MCwiZXhwIjoxNzQ2NDUwMDcwfQ.XyhikfL4UplROpcYOUR2KrUg46Z81p9BBWXTRf9LxfI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"originalUrl\": \"https://claude.ai/public/artifacts/877800b0-7789-4311-92ac-3a80c0aa1d08\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/links/f449b947-bef2-4457-8872-9610e36025bd",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"links",
+								"f449b947-bef2-4457-8872-9610e36025bd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stats",
+			"item": [
+				{
+					"name": "Get Browser stats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJjMTQxODQ2LTUxZWEtNDBiOS05MzcxLTJkN2YzOWRlOGM3OCIsImlhdCI6MTc0NjQ1MTA0NCwiZXhwIjoxNzQ2NDU4MjQ0fQ.tyYa5ZPhTzVMp9vbZUaLvEfFeOjNvu7puu9UGrTlLzE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/statistics/bf8bcf75-d699-4f1a-b981-21b04da6867b/browsers",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"statistics",
+								"bf8bcf75-d699-4f1a-b981-21b04da6867b",
+								"browsers"
 							]
 						}
 					},
