@@ -13,6 +13,8 @@ export class AppController {
   ) {
     const link = await this.appService.getLinkByShortCode(code);
 
+    await this.appService.trackClick(link.shortCode, '1', 'User Agent');
+
     return res.redirect(link.originalUrl);
   }
 }
