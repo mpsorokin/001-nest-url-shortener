@@ -11,6 +11,30 @@ export class StatisticsService {
     this.parser = new UAParser();
   }
 
+  async getBrowserStats(id: string) {
+    const clicks = await this.getClicks(id);
+
+    const stats = clicks.reduce((acc, click) => {
+      const { browser } = this.getBrowserByUserAgent(click.userAgent);
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      if (acc[browser]) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        acc[browser] += 1;
+      } else {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        acc[browser] = 1;
+      }
+
+      return acc;
+    }, {});
+
+    return stats;
+  }
+
   private async getClicks(linkId: string) {
     const clicks = await this.prismaService.click.findMany({
       where: {
