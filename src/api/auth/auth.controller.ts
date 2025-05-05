@@ -23,7 +23,7 @@ import {
 } from '@nestjs/swagger';
 import { AuthResponse } from './dto/auth.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { Authorization } from './decorators/authorization.decorator';
+import { Authorization } from '../../common/decorators/authorization.decorator';
 
 @Controller('auth')
 export class AuthController {
