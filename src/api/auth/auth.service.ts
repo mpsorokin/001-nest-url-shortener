@@ -12,7 +12,7 @@ import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces/jwt.interface';
 import { LoginRequest } from './dto/login.dto';
 import { Response, Request } from 'express';
-import { isDev } from '../../utils/is-dev.util';
+import { isDev } from '../../common/utils/is-dev.util';
 
 @Injectable()
 export class AuthService {
