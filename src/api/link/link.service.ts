@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/infra/prisma/prisma.service';
 import { CreateLinkDto } from './dto/create-link.dto';
 import { randomBytes } from 'crypto';
@@ -31,5 +31,21 @@ export class LinkService {
     const shortUrl = `${this.configService.getOrThrow<string>('APP_URL')}/${shortCode}`;
 
     return { url: shortUrl };
+  }
+
+  async deleteLink(id: string) {
+    const link = await this.prismaService.link.findUnique({
+      where: { id },
+    });
+
+    if (!link) {
+      throw new NotFoundException(`Link with id ${id} not found`);
+    }
+
+    await this.prismaService.link.delete({
+      where: { id },
+    });
+
+    return true;
   }
 }

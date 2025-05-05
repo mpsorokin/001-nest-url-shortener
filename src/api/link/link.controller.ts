@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
 import { LinkService } from './link.service';
 import { Authorization } from 'src/common/decorators/authorization.decorator';
 import { CreateLinkDto } from './dto/create-link.dto';
@@ -12,5 +12,11 @@ export class LinkController {
   @Post()
   async createLink(@Body() dto: CreateLinkDto, @Authorized('id') id: string) {
     return await this.linkService.createLink(dto, id);
+  }
+
+  @Authorization()
+  @Delete(':id')
+  async deleteLink(@Param('id') id: string) {
+    return await this.linkService.deleteLink(id);
   }
 }
